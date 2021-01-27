@@ -14,4 +14,7 @@ protocol SettingsDelegate {
     func contrastDidChange(contrast:Int)
     
 }
-
+protocol SubtitleDelegate {
+    func didAddSubtitle(url:String)
+    func didAddSound(url:String)
+}

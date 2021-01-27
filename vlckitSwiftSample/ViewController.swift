@@ -93,7 +93,7 @@ class ViewController: UIViewController, VLCMediaPlayerDelegate {
         //let url = NSURL(string: "http://streams.videolan.org/streams/mp4/Mr_MrsSmith-h264_aac.mp4")
 
         //Playing RTSP from internet
-        let url = URL(string: "http://streams.videolan.org/streams/mkv/720p.HDTV.AC3.x264.Sample.mkv".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+        let url = URL(string: "http://dl3.bigupload.in/dl.php?filename=dl6/series/Secrets.of.Sulphur.Springs/s1/Secrets.of.Sulphur.Springs.S01E02.480p.WEB.TakMovie.mkv&code=2e6af00b84549313f5b55aa537e6c9c7")
 
         if url == nil {
             print("Invalid URL")
@@ -111,11 +111,11 @@ class ViewController: UIViewController, VLCMediaPlayerDelegate {
         ])
 
         mediaPlayer.media = media
-        mediaPlayer.addPlaybackSlave(URL(string: "https://raw.githubusercontent.com/andreyvit/subtitle-tools/master/sample.srt"), type: .subtitle, enforce: true)
+        
         mediaPlayer.delegate = self
         mediaPlayer.drawable = self.movieView
         mediaPlayer.play()
-        
+      
         
 
     }
@@ -285,9 +285,13 @@ class ViewController: UIViewController, VLCMediaPlayerDelegate {
     
     @IBAction func settingButtonAction(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "setting") as! SettingsPopOverTableViewController
+        vc.delegate = self
           present(vc, animated: true, completion: nil)
     }
     @IBAction func subtitleButtonAction(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "subtitle") as! SubtitlePopOverTableViewController
+        vc.delegate = self
+          present(vc, animated: true, completion: nil)
     }
     @IBAction func airplayButtonAction(_ sender: Any) {
     }
@@ -378,7 +382,18 @@ class ViewController: UIViewController, VLCMediaPlayerDelegate {
     
 }
 
-extension ViewController : SettingsDelegate {
+extension ViewController : SettingsDelegate , SubtitleDelegate {
+    func didAddSubtitle(url: String) {
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory,
+                                                   in: .userDomainMask).first!
+           let subtitleUrl = documentDirectory.appendingPathComponent("subtitles/1.srt")
+       mediaPlayer.addPlaybackSlave(subtitleUrl, type: .subtitle, enforce: true)
+    }
+    
+    func didAddSound(url: String) {
+        mediaPlayer.addPlaybackSlave(URL(string: url), type: .audio, enforce: true)
+    }
+    
     func rateDidChanged(rate: Float) {
         mediaPlayer.rate = rate
     }
@@ -396,4 +411,33 @@ extension ViewController : SettingsDelegate {
     }
 
     
+}
+
+extension URL {
+    static func createFolder(folderName: String) -> URL? {
+        let fileManager = FileManager.default
+        // Get document directory for device, this should succeed
+        if let documentDirectory = fileManager.urls(for: .documentDirectory,
+                                                    in: .userDomainMask).first {
+            // Construct a URL with desired folder name
+            let folderURL = documentDirectory.appendingPathComponent(folderName)
+            // If folder URL does not exist, create it
+            if !fileManager.fileExists(atPath: folderURL.path) {
+                do {
+                    // Attempt to create folder
+                    try fileManager.createDirectory(atPath: folderURL.path,
+                                                    withIntermediateDirectories: true,
+                                                    attributes: nil)
+                } catch {
+                    // Creation failed. Print error & return nil
+                    print(error.localizedDescription)
+                    return nil
+                }
+            }
+            // Folder either exists, or was created. Return URL
+            return folderURL
+        }
+        // Will only be called if document directory not found
+        return nil
+    }
 }

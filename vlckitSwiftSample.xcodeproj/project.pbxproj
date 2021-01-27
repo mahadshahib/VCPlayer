@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C4A08D125C1F702006A8C7B /* SubtitlePopOverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4A08D025C1F702006A8C7B /* SubtitlePopOverTableViewController.swift */; };
 		0CC6DF2A25C09701001D6589 /* SettingsPopOverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6DF2925C09701001D6589 /* SettingsPopOverTableViewController.swift */; };
 		0CC6DF2F25C09866001D6589 /* RateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6DF2E25C09866001D6589 /* RateTableViewCell.swift */; };
 		0CC6DF3425C0987D001D6589 /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6DF3325C0987D001D6589 /* SliderTableViewCell.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C4A08D025C1F702006A8C7B /* SubtitlePopOverTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitlePopOverTableViewController.swift; sourceTree = "<group>"; };
 		0C5730BFD46A0FE30C7E193A /* Pods-vlckitSwiftSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vlckitSwiftSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-vlckitSwiftSample/Pods-vlckitSwiftSample.release.xcconfig"; sourceTree = "<group>"; };
 		0CC6DF2925C09701001D6589 /* SettingsPopOverTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPopOverTableViewController.swift; sourceTree = "<group>"; };
 		0CC6DF2E25C09866001D6589 /* RateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTableViewCell.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				0CC6DF3325C0987D001D6589 /* SliderTableViewCell.swift */,
 				0CC6DF3825C0988F001D6589 /* TextFieldTableViewCell.swift */,
 				0CC6DF3D25C0995C001D6589 /* SettingsDelegate.swift */,
+				0C4A08D025C1F702006A8C7B /* SubtitlePopOverTableViewController.swift */,
 			);
 			path = vlckitSwiftSample;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				0CC6DF3E25C0995C001D6589 /* SettingsDelegate.swift in Sources */,
 				0CC6DF3425C0987D001D6589 /* SliderTableViewCell.swift in Sources */,
 				4D00B11A1BFD58EE00D8BB3E /* empty.cpp in Sources */,
+				0C4A08D125C1F702006A8C7B /* SubtitlePopOverTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

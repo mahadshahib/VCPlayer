@@ -352,44 +352,57 @@
             </objects>
             <point key="canvasLocation" x="596" y="18"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Subtitle Pop Over Table View Controller-->
         <scene sceneID="KbF-FI-IqG">
             <objects>
-                <tableViewController id="FPT-kR-aZU" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vyd-C6-60C">
+                <tableViewController storyboardIdentifier="subtitle" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FPT-kR-aZU" customClass="SubtitlePopOverTableViewController" customModule="vlckitSwiftSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="vyd-C6-60C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="58" id="qIg-ut-Cfm">
-                                <rect key="frame" x="0.0" y="28" width="414" height="58"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="textfield" rowHeight="118" id="qIg-ut-Cfm" customClass="TextFieldTableViewCell" customModule="vlckitSwiftSample" customModuleProvider="target">
+                                <rect key="frame" x="20" y="55.333332061767578" width="374" height="118"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qIg-ut-Cfm" id="KT0-oD-six">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="118"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IvV-tD-zCs">
-                                            <rect key="frame" x="35" y="16" width="344" height="26"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="لینک زیرنویس را وارد کنید" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="swo-8Z-yHA">
-                                                    <rect key="frame" x="0.0" y="0.0" width="278" height="26"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fc-rn-qnV">
-                                                    <rect key="frame" x="288" y="0.0" width="56" height="26"/>
-                                                    <state key="normal" title="اضافه کن"/>
-                                                </button>
-                                            </subviews>
-                                        </stackView>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="لینک زیرنویس را وارد کنید" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="swo-8Z-yHA">
+                                            <rect key="frame" x="25" y="16" width="324" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="BLj-Vi-Dfj"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fc-rn-qnV">
+                                            <rect key="frame" x="25" y="56" width="324" height="46"/>
+                                            <color key="backgroundColor" red="0.44333022832870483" green="0.3345940113067627" blue="0.90899783372879028" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="sZc-jW-CpJ"/>
+                                            </constraints>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" title="اضافه کن"/>
+                                            <connections>
+                                                <action selector="addButtonTapped:" destination="qIg-ut-Cfm" eventType="touchUpInside" id="gk8-Fb-Rt3"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="IvV-tD-zCs" secondAttribute="bottom" constant="5" id="XNi-Zf-pa0"/>
-                                        <constraint firstItem="IvV-tD-zCs" firstAttribute="leading" secondItem="KT0-oD-six" secondAttribute="leadingMargin" constant="15" id="s5C-OF-dLm"/>
-                                        <constraint firstItem="IvV-tD-zCs" firstAttribute="top" secondItem="KT0-oD-six" secondAttribute="topMargin" constant="5" id="sMu-mH-a2Z"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="IvV-tD-zCs" secondAttribute="trailing" constant="15" id="tGk-QB-cm5"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="0Fc-rn-qnV" secondAttribute="trailing" constant="5" id="2e9-cG-D5D"/>
+                                        <constraint firstItem="0Fc-rn-qnV" firstAttribute="leading" secondItem="KT0-oD-six" secondAttribute="leadingMargin" constant="5" id="DtO-LG-Mop"/>
+                                        <constraint firstItem="swo-8Z-yHA" firstAttribute="top" secondItem="KT0-oD-six" secondAttribute="topMargin" constant="5" id="ase-dR-fhf"/>
+                                        <constraint firstItem="swo-8Z-yHA" firstAttribute="leading" secondItem="KT0-oD-six" secondAttribute="leadingMargin" constant="5" id="c7i-2n-xEM"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="swo-8Z-yHA" secondAttribute="trailing" constant="5" id="ucx-lS-CTa"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="0Fc-rn-qnV" secondAttribute="bottom" constant="5" id="xPR-gz-fG9"/>
+                                        <constraint firstItem="0Fc-rn-qnV" firstAttribute="top" secondItem="swo-8Z-yHA" secondAttribute="bottom" constant="5" id="yw0-3S-4rn"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addButton" destination="0Fc-rn-qnV" id="2Te-hO-0DD"/>
+                                    <outlet property="textField" destination="swo-8Z-yHA" id="g40-tx-EIG"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -400,7 +413,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HZV-19-HnF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1537.68115942029" y="255.80357142857142"/>
+            <point key="canvasLocation" x="1302.8985507246377" y="8.7053571428571423"/>
         </scene>
     </scenes>
     <resources>
