@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CC6DF2A25C09701001D6589 /* SettingsPopOverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6DF2925C09701001D6589 /* SettingsPopOverTableViewController.swift */; };
+		0CC6DF2F25C09866001D6589 /* RateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6DF2E25C09866001D6589 /* RateTableViewCell.swift */; };
+		0CC6DF3425C0987D001D6589 /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6DF3325C0987D001D6589 /* SliderTableViewCell.swift */; };
+		0CC6DF3925C0988F001D6589 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6DF3825C0988F001D6589 /* TextFieldTableViewCell.swift */; };
+		0CC6DF3E25C0995C001D6589 /* SettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6DF3D25C0995C001D6589 /* SettingsDelegate.swift */; };
 		4D00B0E71BFD569700D8BB3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D00B0E61BFD569700D8BB3E /* AppDelegate.swift */; };
 		4D00B0E91BFD569700D8BB3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D00B0E81BFD569700D8BB3E /* ViewController.swift */; };
 		4D00B0EC1BFD569700D8BB3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D00B0EA1BFD569700D8BB3E /* Main.storyboard */; };
@@ -41,6 +46,11 @@
 
 /* Begin PBXFileReference section */
 		0C5730BFD46A0FE30C7E193A /* Pods-vlckitSwiftSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vlckitSwiftSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-vlckitSwiftSample/Pods-vlckitSwiftSample.release.xcconfig"; sourceTree = "<group>"; };
+		0CC6DF2925C09701001D6589 /* SettingsPopOverTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPopOverTableViewController.swift; sourceTree = "<group>"; };
+		0CC6DF2E25C09866001D6589 /* RateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateTableViewCell.swift; sourceTree = "<group>"; };
+		0CC6DF3325C0987D001D6589 /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
+		0CC6DF3825C0988F001D6589 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		0CC6DF3D25C0995C001D6589 /* SettingsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDelegate.swift; sourceTree = "<group>"; };
 		2A93027C0135251BAA05100F /* Pods-vlckitSwiftSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vlckitSwiftSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-vlckitSwiftSample/Pods-vlckitSwiftSample.debug.xcconfig"; sourceTree = "<group>"; };
 		4415885FB4A334A8A7FB17B0 /* Pods_vlckitSwiftSampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vlckitSwiftSampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		490C3A601C88DE96D0AAAA4D /* Pods-vlckitSwiftSampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vlckitSwiftSampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-vlckitSwiftSampleTests/Pods-vlckitSwiftSampleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +143,11 @@
 				4D00B1141BFD57B300D8BB3E /* vlckitSwiftSample-Bridging-Header.h */,
 				4D00B1181BFD58EE00D8BB3E /* empty.cpp */,
 				4D00B1191BFD58EE00D8BB3E /* empty.hpp */,
+				0CC6DF2925C09701001D6589 /* SettingsPopOverTableViewController.swift */,
+				0CC6DF2E25C09866001D6589 /* RateTableViewCell.swift */,
+				0CC6DF3325C0987D001D6589 /* SliderTableViewCell.swift */,
+				0CC6DF3825C0988F001D6589 /* TextFieldTableViewCell.swift */,
+				0CC6DF3D25C0995C001D6589 /* SettingsDelegate.swift */,
 			);
 			path = vlckitSwiftSample;
 			sourceTree = "<group>";
@@ -378,6 +393,11 @@
 			files = (
 				4D00B0E91BFD569700D8BB3E /* ViewController.swift in Sources */,
 				4D00B0E71BFD569700D8BB3E /* AppDelegate.swift in Sources */,
+				0CC6DF3925C0988F001D6589 /* TextFieldTableViewCell.swift in Sources */,
+				0CC6DF2A25C09701001D6589 /* SettingsPopOverTableViewController.swift in Sources */,
+				0CC6DF2F25C09866001D6589 /* RateTableViewCell.swift in Sources */,
+				0CC6DF3E25C0995C001D6589 /* SettingsDelegate.swift in Sources */,
+				0CC6DF3425C0987D001D6589 /* SliderTableViewCell.swift in Sources */,
 				4D00B11A1BFD58EE00D8BB3E /* empty.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

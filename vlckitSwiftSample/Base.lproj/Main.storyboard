@@ -247,33 +247,33 @@
             </objects>
             <point key="canvasLocation" x="-188.40579710144928" y="8.7053571428571423"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Settings Pop Over Table View Controller-->
         <scene sceneID="Rf2-sZ-gS1">
             <objects>
-                <tableViewController id="87K-Er-E2G" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y3n-iq-kKY">
+                <tableViewController storyboardIdentifier="setting" useStoryboardIdentifierAsRestorationIdentifier="YES" id="87K-Er-E2G" customClass="SettingsPopOverTableViewController" customModule="vlckitSwiftSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Y3n-iq-kKY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="79" id="nhp-Ll-MGg">
-                                <rect key="frame" x="0.0" y="28" width="414" height="79"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="speed" rowHeight="79" id="nhp-Ll-MGg" customClass="RateTableViewCell" customModule="vlckitSwiftSample" customModuleProvider="target">
+                                <rect key="frame" x="20" y="55.333332061767578" width="374" height="79"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nhp-Ll-MGg" id="LIQ-ij-uac">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="OyA-wT-Zv0">
-                                            <rect key="frame" x="15" y="2" width="384" height="75"/>
+                                            <rect key="frame" x="15" y="2" width="344" height="75"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="سرعت پخش" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RML-GX-MEP">
-                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="20"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="344" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Bq4-jg-QAM">
-                                                    <rect key="frame" x="0.0" y="37" width="384" height="39"/>
+                                                    <rect key="frame" x="0.0" y="37" width="344" height="39"/>
                                                     <segments>
                                                         <segment title="0.5x"/>
                                                         <segment title="1x"/>
@@ -281,6 +281,9 @@
                                                         <segment title="2x"/>
                                                         <segment title="2.5x"/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="videoRateDidChange:" destination="nhp-Ll-MGg" eventType="valueChanged" id="gUf-OM-yzH"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                         </stackView>
@@ -292,102 +295,53 @@
                                         <constraint firstAttribute="bottom" secondItem="OyA-wT-Zv0" secondAttribute="bottom" constant="2" id="ogE-M1-Nap"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="RML-GX-MEP" id="27A-Fo-q7g"/>
+                                    <outlet property="rateSegmentController" destination="Bq4-jg-QAM" id="Ttq-ha-zgd"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="79" id="4Xe-2e-3MV">
-                                <rect key="frame" x="0.0" y="107" width="414" height="79"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="slider" rowHeight="79" id="4Xe-2e-3MV" customClass="SliderTableViewCell" customModule="vlckitSwiftSample" customModuleProvider="target">
+                                <rect key="frame" x="20" y="134.33333206176758" width="374" height="79"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Xe-2e-3MV" id="O7z-On-Kcp">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uml-pa-ILR">
-                                            <rect key="frame" x="15" y="2" width="384" height="75"/>
+                                            <rect key="frame" x="15" y="10" width="344" height="59"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="صدا" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHt-re-zdF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="صدا" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHt-re-zdF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="344" height="20"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Ypi-Ng-36i">
-                                                    <rect key="frame" x="-2" y="37" width="388" height="39"/>
+                                                <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Ypi-Ng-36i">
+                                                    <rect key="frame" x="-2" y="37" width="348" height="23"/>
                                                     <imageReference key="minimumValueImage" image="volume.fill" catalog="system" symbolScale="medium"/>
                                                     <imageReference key="maximumValueImage" image="volume.3.fill" catalog="system" symbolScale="medium"/>
+                                                    <connections>
+                                                        <action selector="sliderValueDidChange:" destination="4Xe-2e-3MV" eventType="valueChanged" id="eMO-iA-e25"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="Uml-pa-ILR" secondAttribute="bottom" constant="2" id="87W-iU-Y3V"/>
-                                        <constraint firstItem="Uml-pa-ILR" firstAttribute="top" secondItem="O7z-On-Kcp" secondAttribute="top" constant="2" id="Tfn-mP-TfK"/>
+                                        <constraint firstAttribute="bottom" secondItem="Uml-pa-ILR" secondAttribute="bottom" constant="10" id="87W-iU-Y3V"/>
+                                        <constraint firstItem="Uml-pa-ILR" firstAttribute="top" secondItem="O7z-On-Kcp" secondAttribute="top" constant="10" id="Tfn-mP-TfK"/>
                                         <constraint firstItem="Uml-pa-ILR" firstAttribute="leading" secondItem="O7z-On-Kcp" secondAttribute="leading" constant="15" id="hnn-yJ-02l"/>
                                         <constraint firstAttribute="trailing" secondItem="Uml-pa-ILR" secondAttribute="trailing" constant="15" id="x5f-ah-Yn8"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="79" id="EaM-IV-FGH">
-                                <rect key="frame" x="0.0" y="186" width="414" height="79"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EaM-IV-FGH" id="cPA-T1-gox">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="ySa-9x-LEn">
-                                            <rect key="frame" x="15" y="2" width="384" height="75"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="روشنایی" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfX-wb-muO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="20"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="94f-jH-UET">
-                                                    <rect key="frame" x="-2" y="37" width="388" height="39"/>
-                                                    <imageReference key="minimumValueImage" image="light.min" catalog="system" symbolScale="medium"/>
-                                                    <imageReference key="maximumValueImage" image="light.max" catalog="system" symbolScale="medium"/>
-                                                </slider>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="ySa-9x-LEn" firstAttribute="leading" secondItem="cPA-T1-gox" secondAttribute="leading" constant="15" id="GiQ-U5-R03"/>
-                                        <constraint firstItem="ySa-9x-LEn" firstAttribute="top" secondItem="cPA-T1-gox" secondAttribute="top" constant="2" id="h7O-ig-fuY"/>
-                                        <constraint firstAttribute="trailing" secondItem="ySa-9x-LEn" secondAttribute="trailing" constant="15" id="hhg-zW-Jjz"/>
-                                        <constraint firstAttribute="bottom" secondItem="ySa-9x-LEn" secondAttribute="bottom" constant="2" id="ulX-uh-XJk"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="79" id="gm2-Wj-CZW">
-                                <rect key="frame" x="0.0" y="265" width="414" height="79"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gm2-Wj-CZW" id="ef1-5E-VYP">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="d4o-0H-DnF">
-                                            <rect key="frame" x="15" y="2" width="384" height="75"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="کنتراست" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xra-if-Cwc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="384" height="20"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" minimumValueImage="sun.min" catalog="system" maximumValueImage="sun.max" translatesAutoresizingMaskIntoConstraints="NO" id="Ayo-81-SQP">
-                                                    <rect key="frame" x="-2" y="37" width="388" height="39"/>
-                                                </slider>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="d4o-0H-DnF" firstAttribute="leading" secondItem="ef1-5E-VYP" secondAttribute="leading" constant="15" id="Ntx-aZ-bFG"/>
-                                        <constraint firstAttribute="trailing" secondItem="d4o-0H-DnF" secondAttribute="trailing" constant="15" id="PA1-dK-r4e"/>
-                                        <constraint firstItem="d4o-0H-DnF" firstAttribute="top" secondItem="ef1-5E-VYP" secondAttribute="top" constant="2" id="QNY-Zj-iAL"/>
-                                        <constraint firstAttribute="bottom" secondItem="d4o-0H-DnF" secondAttribute="bottom" constant="2" id="bvR-pe-NCp"/>
-                                    </constraints>
-                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="containerStack" destination="Uml-pa-ILR" id="jnv-LX-c09"/>
+                                    <outlet property="label" destination="oHt-re-zdF" id="d95-64-QhP"/>
+                                    <outlet property="slider" destination="Ypi-Ng-36i" id="Iab-Be-2bf"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="87K-Er-E2G" id="fIz-Y7-5pp"/>
                             <outlet property="delegate" destination="87K-Er-E2G" id="G0Q-OD-a2D"/>
@@ -396,7 +350,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vp8-fY-Lc0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="821.73913043478262" y="255.80357142857142"/>
+            <point key="canvasLocation" x="596" y="18"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="KbF-FI-IqG">
@@ -456,14 +410,10 @@
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="gobackward.30" catalog="system" width="121" height="128"/>
         <image name="goforward.30" catalog="system" width="121" height="128"/>
-        <image name="light.max" catalog="system" width="128" height="72"/>
-        <image name="light.min" catalog="system" width="128" height="74"/>
         <image name="lock.circle" catalog="system" width="128" height="121"/>
         <image name="lock.open" catalog="system" width="128" height="110"/>
         <image name="multiply" catalog="system" width="128" height="111"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
-        <image name="sun.max" catalog="system" width="128" height="124"/>
-        <image name="sun.min" catalog="system" width="128" height="121"/>
         <image name="volume.3.fill" catalog="system" width="128" height="86"/>
         <image name="volume.fill" catalog="system" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MediaPlayer
 enum ScreenState {
     case locked
     case unlocked
@@ -28,7 +29,7 @@ class ViewController: UIViewController, VLCMediaPlayerDelegate {
     @IBOutlet weak var totalTimeLabel: UILabel!
     @IBOutlet weak var unlockButton: UIButton!
     @IBOutlet weak var aspectRatioButton: UIButton!
-    
+  
     var currentScreenState = ScreenState.unlocked
     var movieView: UIView!
     let loader = UIActivityIndicatorView(activityIndicatorStyle: .white)
@@ -92,7 +93,7 @@ class ViewController: UIViewController, VLCMediaPlayerDelegate {
         //let url = NSURL(string: "http://streams.videolan.org/streams/mp4/Mr_MrsSmith-h264_aac.mp4")
 
         //Playing RTSP from internet
-        let url = URL(string: "http://dl1.bigupload.in/dl.php?filename=dl7/movie/2020/100.Percent.Wolf.2020.720p.TakMovie.mkv&code=2e6af00b84549313f5b55aa537e6c9c7")
+        let url = URL(string: "http://streams.videolan.org/streams/mkv/720p.HDTV.AC3.x264.Sample.mkv".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
 
         if url == nil {
             print("Invalid URL")
@@ -102,13 +103,10 @@ class ViewController: UIViewController, VLCMediaPlayerDelegate {
         let media = VLCMedia(url: url!)
 
         // Set media options
-        // https://wiki.videolan.org/VLC_command-line_help
+        // https://wiki.videolan.org/VLC_commandaqa-line_help
         media.addOptions([
-            "network-caching": 1000,
-            "udp-caching": 1000,
-            "tcp-caching": 1000,
-            "realrtsp-caching": 1000,
-            "hardware-decoding": true
+            "network-caching": 5000,
+            "hardware-decoding": false
         
         ])
 
@@ -173,7 +171,10 @@ class ViewController: UIViewController, VLCMediaPlayerDelegate {
         timeLabel.text = mediaPlayer.time.description
         totalTimeLabel.text = mediaPlayer.remainingTime.description
         let progress = mediaPlayer.position
-        slider.value = progress
+            UIView.animate(withDuration:0.3) { [self] in
+                slider.value = progress
+            }
+       
         }
         
     }
@@ -283,6 +284,8 @@ class ViewController: UIViewController, VLCMediaPlayerDelegate {
     }
     
     @IBAction func settingButtonAction(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "setting") as! SettingsPopOverTableViewController
+          present(vc, animated: true, completion: nil)
     }
     @IBAction func subtitleButtonAction(_ sender: Any) {
     }
@@ -335,33 +338,36 @@ class ViewController: UIViewController, VLCMediaPlayerDelegate {
         case .buffering:
             loader.isHidden = false
             playButton.setBackgroundImage(UIImage(systemName: "pause.fill"), for: .normal)
-            //print("buffering is \(mediaPlayer.state.rawValue)")
+            print("buffering is \(mediaPlayer.state.rawValue)")
         case .ended:
             loader.isHidden = true
             playButton.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
-            //print("ending is \(mediaPlayer.state.rawValue)")
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
+            print("ending is \(mediaPlayer.state.rawValue)")
         case .error:
             loader.isHidden = true
             playButton.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
-            //print("error is \(mediaPlayer.state.rawValue)")
+            print("error is \(mediaPlayer.state.rawValue)")
         case .opening:
             loader.isHidden = false
             playButton.setBackgroundImage(UIImage(systemName: "pause.fill"), for: .normal)
-            //print("opening is \(mediaPlayer.state.rawValue)")
+            print("opening is \(mediaPlayer.state.rawValue)")
         case .paused:
             loader.isHidden = true
             playButton.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
-            //print("pause is \(mediaPlayer.state.rawValue)")
+            print("pause is \(mediaPlayer.state.rawValue)")
         case .playing:
             loader.isHidden = true
             playButton.setBackgroundImage(UIImage(systemName: "pause.fill"), for: .normal)
-            //print("playing is \(mediaPlayer.state.rawValue)")
+            print("playing is \(mediaPlayer.state.rawValue)")
         case .stopped:
             loader.isHidden = true
             playButton.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
-            //print("stoping is \(mediaPlayer.state.rawValue)")
+            print("stoping is \(mediaPlayer.state.rawValue)")
         case .esAdded:
-            //print("esAdded")
+            print("esAdded")
             defualtAspect = mediaPlayer.videoAspectRatio
         default:
             loader.isHidden = true
@@ -372,3 +378,22 @@ class ViewController: UIViewController, VLCMediaPlayerDelegate {
     
 }
 
+extension ViewController : SettingsDelegate {
+    func rateDidChanged(rate: Float) {
+        mediaPlayer.rate = rate
+    }
+    
+    func soundDidChange(sound: Int) {
+    
+    }
+    
+    func lightDidChange(light: Int) {
+        mediaPlayer.brightness = Float(light)
+    }
+    
+    func contrastDidChange(contrast: Int) {
+        mediaPlayer.contrast = Float(contrast)
+    }
+
+    
+}
