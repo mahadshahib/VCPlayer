@@ -38,16 +38,17 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHW-Yn-3ZT">
-                                                <rect key="frame" x="60" y="10.33333333333333" width="30" height="29.666666666666668"/>
+                                                <rect key="frame" x="60" y="9.9999999999999964" width="30" height="30.333333333333332"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="yHW-Yn-3ZT" secondAttribute="height" multiplier="1:1" id="moa-SS-sxG"/>
                                                 </constraints>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal">
-                                                    <imageReference key="backgroundImage" image="gearshape" catalog="system" symbolScale="medium"/>
-                                                </state>
+                                                <state key="normal" backgroundImage="gear" catalog="system"/>
                                                 <connections>
                                                     <action selector="settingButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wYV-AZ-iVB"/>
+                                                    <segue destination="87K-Er-E2G" kind="popoverPresentation" identifier="setting" popoverAnchorView="yHW-Yn-3ZT" id="THm-OI-N0y">
+                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                    </segue>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BO7-5K-6ib">
@@ -61,6 +62,9 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="subtitleButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nS6-Rg-b9h"/>
+                                                    <segue destination="FPT-kR-aZU" kind="popoverPresentation" identifier="subtitle" popoverAnchorView="BO7-5K-6ib" id="FCx-bd-MOs">
+                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                    </segue>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -73,10 +77,10 @@
                                         <edgeInsets key="layoutMargins" top="10" left="10" bottom="10" right="10"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rwf-Tv-anZ">
-                                        <rect key="frame" x="215" y="0.0" width="54" height="50"/>
+                                        <rect key="frame" x="215" y="0.0" width="169" height="50"/>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Z8-z2-8Ga">
-                                        <rect key="frame" x="334" y="0.0" width="50" height="50"/>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Z8-z2-8Ga">
+                                        <rect key="frame" x="384" y="0.0" width="50" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckr-cg-E6g">
                                                 <rect key="frame" x="8" y="9.6666666666666679" width="34" height="31.333333333333336"/>
@@ -245,14 +249,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-188.40579710144928" y="8.7053571428571423"/>
+            <point key="canvasLocation" x="-614" y="-230"/>
         </scene>
         <!--Settings Pop Over Table View Controller-->
         <scene sceneID="Rf2-sZ-gS1">
             <objects>
                 <tableViewController storyboardIdentifier="setting" useStoryboardIdentifierAsRestorationIdentifier="YES" id="87K-Er-E2G" customClass="SettingsPopOverTableViewController" customModule="vlckitSwiftSample" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Y3n-iq-kKY">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Y3n-iq-kKY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -310,14 +314,17 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uml-pa-ILR">
                                             <rect key="frame" x="15" y="10" width="344" height="59"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="صدا" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHt-re-zdF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="344" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="صدا" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHt-re-zdF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="344" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="of6-dF-IPc"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Ypi-Ng-36i">
-                                                    <rect key="frame" x="-2" y="37" width="348" height="23"/>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Ypi-Ng-36i">
+                                                    <rect key="frame" x="-2" y="42" width="348" height="18"/>
                                                     <imageReference key="minimumValueImage" image="volume.fill" catalog="system" symbolScale="medium"/>
                                                     <imageReference key="maximumValueImage" image="volume.3.fill" catalog="system" symbolScale="medium"/>
                                                     <connections>
@@ -350,14 +357,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vp8-fY-Lc0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="596" y="18"/>
+            <point key="canvasLocation" x="546" y="-188"/>
         </scene>
         <!--Subtitle Pop Over Table View Controller-->
         <scene sceneID="KbF-FI-IqG">
             <objects>
                 <tableViewController storyboardIdentifier="subtitle" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FPT-kR-aZU" customClass="SubtitlePopOverTableViewController" customModule="vlckitSwiftSample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="vyd-C6-60C">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -382,8 +389,11 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="35" id="sZc-jW-CpJ"/>
                                             </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <state key="normal" title="اضافه کن"/>
+                                            <state key="normal" title="Add">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
                                             <connections>
                                                 <action selector="addButtonTapped:" destination="qIg-ut-Cfm" eventType="touchUpInside" id="gk8-Fb-Rt3"/>
                                             </connections>
@@ -404,6 +414,14 @@
                                     <outlet property="textField" destination="swo-8Z-yHA" id="g40-tx-EIG"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="srt" rowHeight="118" id="fDW-eC-s5G">
+                                <rect key="frame" x="20" y="173.33333206176758" width="374" height="118"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fDW-eC-s5G" id="VS3-jd-1gJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="118"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="FPT-kR-aZU" id="gLG-DU-K11"/>
@@ -420,7 +438,7 @@
         <image name="airplayvideo" catalog="system" width="128" height="98"/>
         <image name="aspectratio" catalog="system" width="128" height="93"/>
         <image name="captions.bubble" catalog="system" width="128" height="110"/>
-        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="gobackward.30" catalog="system" width="121" height="128"/>
         <image name="goforward.30" catalog="system" width="121" height="128"/>
         <image name="lock.circle" catalog="system" width="128" height="121"/>

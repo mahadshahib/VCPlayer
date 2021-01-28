@@ -286,12 +286,12 @@ class ViewController: UIViewController, VLCMediaPlayerDelegate {
     @IBAction func settingButtonAction(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "setting") as! SettingsPopOverTableViewController
         vc.delegate = self
-          present(vc, animated: true, completion: nil)
+        //  present(vc, animated: true, completion: nil)
     }
     @IBAction func subtitleButtonAction(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "subtitle") as! SubtitlePopOverTableViewController
         vc.delegate = self
-          present(vc, animated: true, completion: nil)
+         // present(vc, animated: true, completion: nil)
     }
     @IBAction func airplayButtonAction(_ sender: Any) {
     }
@@ -382,20 +382,23 @@ class ViewController: UIViewController, VLCMediaPlayerDelegate {
     
 }
 
-extension ViewController : SettingsDelegate , SubtitleDelegate {
+extension ViewController : SettingsDelegate , SubtitleDelegate , UIPopoverPresentationControllerDelegate {
     func didAddSubtitle(url: String) {
-        let documentDirectory = FileManager.default.urls(for: .documentDirectory,
-                                                   in: .userDomainMask).first!
-           let subtitleUrl = documentDirectory.appendingPathComponent("subtitles/1.srt")
-       mediaPlayer.addPlaybackSlave(subtitleUrl, type: .subtitle, enforce: true)
+        if let url = URL(string: url) {
+            mediaPlayer.addPlaybackSlave(url, type: .subtitle, enforce: true)
+        }
+       
     }
     
     func didAddSound(url: String) {
-        mediaPlayer.addPlaybackSlave(URL(string: url), type: .audio, enforce: true)
+        if let url = URL(string: url) {
+        mediaPlayer.addPlaybackSlave(url, type: .audio, enforce: true)
+    }
     }
     
     func rateDidChanged(rate: Float) {
         mediaPlayer.rate = rate
+        
     }
     
     func soundDidChange(sound: Int) {
@@ -403,12 +406,36 @@ extension ViewController : SettingsDelegate , SubtitleDelegate {
     }
     
     func lightDidChange(light: Int) {
+        print("yea it changed")
         mediaPlayer.brightness = Float(light)
     }
     
     func contrastDidChange(contrast: Int) {
         mediaPlayer.contrast = Float(contrast)
     }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+            return .none
+        }
+        
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "subtitle" {
+                let vc = segue.destination as! SubtitlePopOverTableViewController
+                vc.delegate = self
+            }else if segue.identifier == "setting" {
+                let vc = segue.destination as! SettingsPopOverTableViewController
+                vc.delegate = self
+                vc.defualtLight = mediaPlayer.brightness
+                vc.defualtContrast = mediaPlayer.contrast
+                
+            }
+            // All popover segues should be popovers even on iPhone.
+            if let popoverController = segue.destination.popoverPresentationController, let button = sender as? UIButton {
+                popoverController.delegate = self
+                popoverController.sourceRect = button.bounds
+            }
+            
+        }
 
     
 }

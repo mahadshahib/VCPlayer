@@ -12,6 +12,7 @@ import MediaPlayer
 class SettingsPopOverTableViewController: UITableViewController , SettingsDelegate {
 
     func rateDidChanged(rate: Float) {
+        print(rate)
         self.delegate?.rateDidChanged(rate: rate)
         
     }
@@ -29,11 +30,29 @@ class SettingsPopOverTableViewController: UITableViewController , SettingsDelega
     }
     
     var delegate : SettingsDelegate?
+    var defualtContrast : Float = 1
+    var defualtLight : Float = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        self.view.backgroundColor = .secondarySystemBackground
     }
-
+    override func viewWillLayoutSubviews() {
+        switch UIApplication.shared.statusBarOrientation {
+        case .landscapeLeft:
+            fallthrough
+        case .landscapeRight:
+            let screenHeight = UIScreen.main.bounds.height
+            preferredContentSize = CGSize(width: screenHeight*0.7, height: screenHeight*0.7)
+        case .portrait:
+            fallthrough
+        case .portraitUpsideDown:
+            let screenWidth = UIScreen.main.bounds.width
+            preferredContentSize = CGSize(width: screenWidth*0.7, height: screenWidth*0.7)
+        default:
+            break
+        }
+        
+        }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -69,7 +88,7 @@ class SettingsPopOverTableViewController: UITableViewController , SettingsDelega
             cell.sliderType = .light
             cell.slider.maximumValue = 180
             cell.slider.minimumValue = -180
-            cell.slider.value = 0
+            cell.slider.value = defualtLight
             cell.slider.minimumValueImage = UIImage(systemName: "light.min")
             cell.slider.maximumValueImage = UIImage(systemName: "light.max")
          
@@ -81,7 +100,7 @@ class SettingsPopOverTableViewController: UITableViewController , SettingsDelega
             cell.sliderType = .contrast
             cell.slider.maximumValue = 2
             cell.slider.minimumValue = 0
-            cell.slider.value = 1
+            cell.slider.value = defualtContrast
             cell.slider.minimumValueImage = UIImage(systemName: "sun.min")
             cell.slider.maximumValueImage = UIImage(systemName: "sun.max")
             
